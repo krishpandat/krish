@@ -1,0 +1,12 @@
+.krish
+{ color:white;
+}
+a{text-decoration:none; color:white;}
+a:hover{color:blue;}
+#list li{display:inline; list-style:none; padding:40}
+#list {background-color: white;color: black; padding-top:20;padding-bottom:20;} 
+li:hover{color:red}
+/*.re{ display:flex;justify-content:space-between;}*/
+.re div{background-color:black;}
+/*.re div{float:left;}*/
+.re{ display:grid; grid-template-columns:auto auto auto auto auto;column-gap:20px;row-gap:20px;background-color:black;}
