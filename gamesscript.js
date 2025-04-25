@@ -1,4 +1,3 @@
-
 //this is a simple game where a player can move left and right and jump on a platform.
 /*let canvas = document.querySelector("#canvas");
 canvas.width = window.innerWidth;
@@ -417,24 +416,32 @@ const platforms = [
     new Platform(800, 300, 200, 20),//PLATFORM 1
 ];
 
-// PLAYER MOVEMENT
+// Add a variable to track the background offset
+let backgroundOffset = 0;
+
+// Modify the player movement to adjust the background offset
 
 addEventListener("keydown", (e) => {
-    if (e.key === "ArrowRight") {
+    if (e.key === "ArrowRight" && player.position.x + player.width < canvas.width) {
         player.position.x += 10; // Move right
+        backgroundOffset -= 5; // Scroll background to the left
     }
-    if (e.key === "ArrowLeft") {
+    if (e.key === "ArrowLeft" && player.position.x > 0) {
         player.position.x -= 10; // Move left
+        backgroundOffset += 5; // Scroll background to the right
     }
     if (e.key === "ArrowUp") {
         player.jump(); // Jump
     }
 });
 
-// Animation loop
+// Update the animation loop to apply the background offset
 function gameAnimation() {
     requestAnimationFrame(gameAnimation);
     context.clearRect(0, 0, canvas.width, canvas.height); // Clear canvas
+
+    // Update the background position
+    canvas.style.backgroundPosition = `${backgroundOffset}px 0px`;
 
     // Draw platforms
     platforms.forEach((platform) => {
